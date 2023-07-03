@@ -3,7 +3,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.asamolov.jshader</groupId>
-  <artifactId>lib</artifactId>
+  <artifactId>${artifactId}</artifactId>
   <packaging>jar</packaging>
   <version>${revision}</version>
   <url>https://github.com/asamolov/jshader</url>
@@ -21,6 +21,8 @@
 
     <!-- composite version - used for the published shaded artifact -->
     <revision>${lib.version}-${variant}</revision>
+    <changelist>${variant}</changelist>
+    <artifactId>lib-${variant}</artifactId>
   </properties>
   <dependencies>
     <dependency>
