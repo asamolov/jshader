@@ -7,6 +7,6 @@ import java.util.Optional;
  */
 public class Greeter {
     public String greet(String name) {
-        return String.format("Howdy, %s!", Optional.ofNullable(name).orElse("%username%"));
+        return String.format("Greetings, %s!", Optional.ofNullable(name).orElse("%username%"));
     }
 }
