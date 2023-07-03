@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.asamolov.jshader</groupId>
+  <artifactId>lib</artifactId>
+  <packaging>jar</packaging>
+  <version>${revision}</version>
+  <url>https://github.com/asamolov/jshader</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+
+    <!-- Wrapper properties below -->
+
+    <!-- version of the first variant -->
+    <variant.a.version>1.0</variant.a.version>
+    <!-- version of the second variant -->
+    <variant.b.version>2.0</variant.b.version>
+
+    <!-- composite version - used for the published shaded artifact -->
+    <revision>wrapped-ab</revision>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>${project.artifactId}-a</artifactId>
+      <version>${variant.a.version}-a</version>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>${project.artifactId}-b</artifactId>
+      <version>${variant.b.version}-b</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
