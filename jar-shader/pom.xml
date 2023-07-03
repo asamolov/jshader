@@ -5,7 +5,7 @@
   <groupId>com.github.asamolov.jshader</groupId>
   <artifactId>lib</artifactId>
   <packaging>jar</packaging>
-  <version>${shaded.version}</version>
+  <version>${revision}</version>
   <url>https://github.com/asamolov/jshader</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,7 +20,7 @@
     <lib.version>1.0</lib.version>
 
     <!-- composite version - used for the published shaded artifact -->
-    <shaded.version>${lib.version}-${variant}</shaded.version>
+    <revision>${lib.version}-${variant}</revision>
   </properties>
   <dependencies>
     <dependency>
@@ -46,8 +46,8 @@
         <configuration>
           <relocations>
             <relocation>
-              <pattern>${groupId}</pattern>
-              <shadedPattern>${variant}.${groupId}</shadedPattern>
+              <pattern>${project.groupId}</pattern>
+              <shadedPattern>${variant}.${project.groupId}</shadedPattern>
             </relocation>
           </relocations>
         </configuration>
