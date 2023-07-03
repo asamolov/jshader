@@ -8,9 +8,8 @@ import com.github.asamolov.jshader.lib.Greeter;
  */
 public class App {
     public static void main(String[] args) {
-	var greeter = new Greeter();
-	var user = System.getProperty("user.name");
+        var greeter = new Greeter();
+        var user = System.getProperty("user.name");
         System.out.println(greeter.greet(user));
     }
 }
-
