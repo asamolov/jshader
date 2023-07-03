@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.asamolov.jshader</groupId>
+  <artifactId>lib</artifactId>
+  <packaging>jar</packaging>
+  <version>${shaded.version}</version>
+  <url>https://github.com/asamolov/jshader</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+
+    <!-- Shader properties below -->
+
+    <!-- prefix to prepend to the class path and append to the version -->
+    <variant>a</variant>
+    <!-- version of the library to shade -->
+    <lib.version>1.0</lib.version>
+
+    <!-- composite version - used for the published shaded artifact -->
+    <shaded.version>${lib.version}-${variant}</shaded.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>com.github.asamolov.jshader</groupId>
+      <artifactId>lib</artifactId>
+      <version>${lib.version}</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <relocations>
+            <relocation>
+              <pattern>${groupId}</pattern>
+              <shadedPattern>${variant}.${groupId}</shadedPattern>
+            </relocation>
+          </relocations>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
